@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Air Quality Index Predictor</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 420px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2a5298;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2a5298;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #1e3c72;
+        }
+
+        #result {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>AQI Predictor</h2>
+
+    <form id="aqiForm">
+
+        <input type="text" name="Country" placeholder="Country" required>
+
+        <input type="number" name="AQI_Value" placeholder="AQI Value" required>
+
+        <input type="number" name="CO_AQI_Value" placeholder="CO AQI Value" required>
+        <input type="text" name="CO_AQI_Category" placeholder="CO AQI Category" required>
+
+        <input type="number" name="Ozone_AQI_Value" placeholder="Ozone AQI Value" required>
+        <input type="text" name="Ozone_AQI_Category" placeholder="Ozone AQI Category" required>
+
+        <input type="number" name="NO2_AQI_Value" placeholder="NO2 AQI Value" required>
+        <input type="text" name="NO2_AQI_Category" placeholder="NO2 AQI Category" required>
+
+        <input type="number" name="PM25_AQI_Value" placeholder="PM2.5 AQI Value" required>
+        <input type="text" name="PM25_AQI_Category" placeholder="PM2.5 AQI Category" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script>
+document.getElementById("aqiForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    const formData = Object.fromEntries(new FormData(this).entries());
+
+    const response = await fetch("/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+    });
+
+    const data = await response.json();
+
+    if(data.prediction){
+        document.getElementById("result").innerText =
+            "Predicted AQI Category: " + data.prediction[0];
+    } else {
+        document.getElementById("result").innerText =
+            "Error: " + data.error;
+    }
+});
+</script>
+
+</body>
+</html>

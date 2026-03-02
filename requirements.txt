@@ -1,0 +1,15 @@
+numpy~=2.2.1
+pandas~=2.2.3
+scikit-learn~=1.6.1
+fastapi==0.115.6
+uvicorn==0.34.0
+tensorflow==2.18.0
+matplotlib~=3.10.0
+seaborn~=0.13.2
+joblib~=1.4.2
+python-dotenv==1.0.1
+python-multipart==0.0.20
+jinja2==3.1.5
+Flask
+pydantic
+joblib

@@ -1,0 +1,66 @@
+# --- Python Cache & Bytecode ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environments ---
+.env
+.env.*
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# --- Secrets & Configs ---
+*.env
+.env.local
+.pdm.toml
+.pypirc
+
+# --- OS / IDE files ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.spyderproject
+.spyproject
+
+# --- Jupyter Notebook checkpoints ---
+.ipynb_checkpoints/
+
+# --- Build ---
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+MANIFEST
+*.spec
+
+# --- Testing ---
+.tox/
+.pytest_cache/
+.coverage
+.coverage.*
+.cache
+*.cover
+*.py,cover
+htmlcov/
+
+# --- Logs & Databases ---
+*.log
+*.sqlite3
+*.sqlite3-journal
+
+# --- Others ---
+.mypy_cache/
+.dmypy.json
+.pyre/
+.pytype/
+cython_debug/
+.scrapy/
+.webassets-cache
+docs/_build/
+.site
