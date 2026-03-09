@@ -6,8 +6,7 @@ import pandas as pd
 # Load model and transformations
 model = joblib.load("src/artifacts/best_model.joblib")
 transformations = joblib.load("src/artifacts/transformations.pkl")
-target_encoder = joblib.load("src/artifacts/target_encoder.pkl")  # لو حفظتيه
-
+target_encoder = joblib.load("src/artifacts/target_encoder.pkl")  
 def add_features(df: pd.DataFrame) -> pd.DataFrame:
     """
     Extract additional features: Max_Pollutant, High_Pollutant_Count
