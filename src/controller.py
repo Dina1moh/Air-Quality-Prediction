@@ -1,5 +1,10 @@
 from flask import Blueprint, request, render_template, jsonify
 import pandas as pd
+import sys
+from pathlib import Path
+import os
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from src.inference import predict_aqi_category
 
 controller = Blueprint("controller", __name__)

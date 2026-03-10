@@ -1,10 +1,16 @@
 import joblib
 import pandas as pd
+import sys
+from pathlib import Path
+import os
 
-# Load artifacts
-model = joblib.load("src/artifacts/best_model.joblib")
-transformations = joblib.load("src/artifacts/transformations.pkl")
-target_encoder = joblib.load("src/artifacts/target_encoder.pkl")
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+# Define artifact paths relative to this script
+artifact_dir = Path(__file__).parent / "artifacts"
+model = joblib.load(artifact_dir / "best_model.joblib")
+transformations = joblib.load(artifact_dir / "transformations.pkl")
+target_encoder = joblib.load(artifact_dir / "target_encoder.pkl")
 
 
 def add_features(df: pd.DataFrame) -> pd.DataFrame:
