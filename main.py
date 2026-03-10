@@ -6,9 +6,10 @@ import os
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from src.controller import controller
 
-app = Flask(__name__)
+app = Flask(__name__ , template_folder=os.path.join("src", "templates"))
 
 app.register_blueprint(controller)
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
